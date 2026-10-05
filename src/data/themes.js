@@ -180,9 +180,12 @@ const createThemeVariables = ({
     // -------------------------------------------------------------------------
     "--shadow-none": "none",
     "--shadow-inset-highlight": "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.09)",
-    "--shadow-inset-highlight-sm": "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.08)",
-    "--shadow-inset-highlight-hover": "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.14)",
-    "--shadow-inset-highlight-strong": "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.2)",
+    "--shadow-inset-highlight-sm":
+      "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.08)",
+    "--shadow-inset-highlight-hover":
+      "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.14)",
+    "--shadow-inset-highlight-strong":
+      "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.2)",
     "--shadow-box-inset": "inset 0 1px 0 rgb(var(--white_rgb) / 0.05)",
     "--shadow-btn-inset": "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.06)",
 
@@ -255,6 +258,7 @@ export const colorThemes = {
     name: "Obsidian & Electric Cerulean",
     nameAr: "أسود فحمي وأزرق سيروليان مع كريمي",
     previewColor: "#40A2D8",
+
     bgPreview: "#000000",
     variables: createThemeVariables({
       mainColor: "#00ff37",
@@ -279,41 +283,6 @@ export const colorThemes = {
       navbarBg: "oklch(28% 0 0 / .72)",
       textOnMain: "#000000",
       particleRgb: "0 255 55",
-      particleDotAlpha: "0.55",
-      particleLineAlpha: "0.22",
-    }),
-  },
-
-  // Second Theme: Emerald Night (Demonstrates total theme switchability)
-  emeraldNight: {
-    id: "emeraldNight",
-    name: "Emerald Night",
-    nameAr: "الزمرد الليلي والذهبي الأنيق",
-    previewColor: "#10b981",
-    bgPreview: "#040d08",
-    variables: createThemeVariables({
-      mainColor: "#10b981",
-      mainRgb: "16 185 129",
-      accentColor: "#34d399",
-      accentRgb: "52 211 153",
-      bgPrimary: "#030c07",
-      blackRgb: "3 12 7",
-      whiteColor: "#ffffff",
-      whiteRgb: "255 255 255",
-      pColor: "#a7f3d0",
-      pRgb: "167 243 208",
-      warningColor: "#fde68a",
-      warningRgb: "253 230 138",
-      cardBorderRgb: "16 185 129",
-      surfaceRgb: "4 22 14",
-      surfaceDeepRgb: "3 18 11",
-      inputBgRgb: "3 15 9",
-      inputBgFocusRgb: "4 24 15",
-      emptyBgRgb: "5 26 17",
-      secondaryBlueRgb: "5 150 105",
-      navbarBg: "oklch(22% 0.04 160 / .75)",
-      textOnMain: "#000000",
-      particleRgb: "16 185 129",
       particleDotAlpha: "0.55",
       particleLineAlpha: "0.22",
     }),

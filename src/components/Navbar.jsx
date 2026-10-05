@@ -43,7 +43,7 @@ export default function Navbar() {
       <div className="navbar-container">
         {/* Brand / Logo */}
         <a href="#home" className="navbar-brand">
-          <img src={profileData.Logo}></img>
+          <img src={profileData.Logo} fetchpriority="high"></img>
          
         </a>
 
