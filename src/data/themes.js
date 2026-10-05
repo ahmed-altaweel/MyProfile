@@ -25,11 +25,11 @@ const createThemeVariables = ({
   blackRgb = "0 0 0",
   whiteColor = "#ffffff",
   whiteRgb = "255 255 255",
-  pColor = "#aad2e6",
-  pRgb = "170 210 230",
+  pColor = "#8ea397",
+  pRgb = "142 163 151",
   warningColor = "#F0EDCF",
-  surfaceRgb = "6 13 26",
-  inputBgRgb = "4 9 18",
+  surfaceRgb = "4 11 7",
+  inputBgRgb = "3 8 5",
   textOnMain = "#000000",
   particleRgb = null,
   particleDotAlpha = "0.55",
@@ -63,7 +63,7 @@ const createThemeVariables = ({
     // -------------------------------------------------------------------------
     // 2. SEMANTIC SURFACES
     // -------------------------------------------------------------------------
-    "--surface-glass": "rgb(var(--surface_rgb) / 0.34)",
+    "--surface-glass": "rgb(var(--surface_rgb) / 0.55)",
     "--surface-solid": "rgb(var(--surface_rgb) / 0.65)",
     "--surface-overlay": "rgb(var(--surface_rgb) / 0.92)",
     "--surface-input": "rgb(var(--input_bg_rgb) / 0.45)",
@@ -71,24 +71,24 @@ const createThemeVariables = ({
     "--navbar_bg": "rgb(var(--surface_rgb) / 0.72)",
     "--overlay-backdrop": "rgb(var(--black_rgb) / 0.72)",
     "--overlay-backdrop-faded": "rgb(var(--black_rgb) / 0)",
-    "--vignette": "rgb(var(--black_rgb) / 0.55)",
+    "--vignette": "rgb(var(--black_rgb) / 0.7)",
 
     // -------------------------------------------------------------------------
     // 3. SEMANTIC BORDERS, LINES & FILLS
     // -------------------------------------------------------------------------
-    "--border-subtle": "rgb(var(--accent_rgb) / 0.12)",
-    "--border": "rgb(var(--accent_rgb) / 0.22)",
-    "--border-strong": "rgb(var(--accent_rgb) / 0.3)",
-    "--border-hover": "rgb(var(--accent_rgb) / 0.42)",
-    "--border-card": "rgb(var(--accent_rgb) / 0.18)",
+    "--border-subtle": "rgb(var(--accent_rgb) / 0.10)",
+    "--border": "rgb(var(--accent_rgb) / 0.18)",
+    "--border-strong": "rgb(var(--accent_rgb) / 0.26)",
+    "--border-hover": "rgb(var(--accent_rgb) / 0.38)",
+    "--border-card": "rgb(var(--accent_rgb) / 0.14)",
 
-    "--line-1": "rgb(var(--white_rgb) / 0.04)",
-    "--line-2": "rgb(var(--white_rgb) / 0.08)",
-    "--line-3": "rgb(var(--white_rgb) / 0.14)",
+    "--line-1": "rgb(var(--white_rgb) / 0.03)",
+    "--line-2": "rgb(var(--white_rgb) / 0.06)",
+    "--line-3": "rgb(var(--white_rgb) / 0.10)",
 
-    "--fill-1": "rgb(var(--white_rgb) / 0.03)",
-    "--fill-2": "rgb(var(--white_rgb) / 0.05)",
-    "--fill-3": "rgb(var(--white_rgb) / 0.08)",
+    "--fill-1": "rgb(var(--white_rgb) / 0.02)",
+    "--fill-2": "rgb(var(--white_rgb) / 0.035)",
+    "--fill-3": "rgb(var(--white_rgb) / 0.055)",
 
     // -------------------------------------------------------------------------
     // 4. MAIN TINTS & SEMANTIC TEXT
@@ -116,9 +116,9 @@ const createThemeVariables = ({
     "--shadow-none": "none",
     "--shadow-inset": "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.08)",
     "--shadow-card":
-      "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.09), 0 20px 50px rgb(var(--black_rgb) / 0.55), 0 0 32px -4px rgb(var(--accent_rgb) / 0.16)",
+      "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.06), 0 20px 50px rgb(var(--black_rgb) / 0.55), 0 0 32px -4px rgb(var(--accent_rgb) / 0.09)",
     "--shadow-card-hover":
-      "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.14), 0 24px 54px rgb(var(--black_rgb) / 0.65), 0 0 36px -4px rgb(var(--accent_rgb) / 0.24)",
+      "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.09), 0 24px 54px rgb(var(--black_rgb) / 0.65), 0 0 36px -4px rgb(var(--accent_rgb) / 0.15)",
     "--shadow-sm":
       "inset 0 1px 0 0 rgb(var(--white_rgb) / 0.08), 0 4px 14px rgb(var(--black_rgb) / 0.25)",
     "--shadow-glow":
@@ -136,15 +136,15 @@ const createThemeVariables = ({
     // 7. GRADIENTS
     // -------------------------------------------------------------------------
     "--gradient-specular":
-      "linear-gradient(90deg, transparent 0%, rgb(var(--white_rgb) / 0.12) 30%, rgb(var(--accent_rgb) / 0.3) 50%, rgb(var(--white_rgb) / 0.12) 70%, transparent 100%)",
+      "linear-gradient(90deg, transparent 0%, rgb(var(--white_rgb) / 0.08) 30%, rgb(var(--accent_rgb) / 0.22) 50%, rgb(var(--white_rgb) / 0.08) 70%, transparent 100%)",
     "--hero-glow-gradient":
-      "radial-gradient(ellipse at center, color-mix(in srgb, var(--main_color) 14%, transparent) 0%, transparent 70%)",
+      "radial-gradient(ellipse at center, color-mix(in srgb, var(--main_color) 9%, transparent) 0%, transparent 70%)",
     "--navbar-sheen":
       "linear-gradient(180deg, rgb(var(--white_rgb) / 0.06) 0%, rgb(var(--white_rgb) / 0.01) 40%, transparent 100%)",
     "--gradient-service-icon":
       "linear-gradient(135deg, rgb(var(--accent_rgb) / 0.2) 0%, rgb(var(--main_rgb) / 0.28) 100%)",
     "--bg-fx-gradient":
-      "radial-gradient(ellipse 60% 45% at 50% 0%, color-mix(in srgb, var(--main_color) 5%, transparent), transparent 70%), radial-gradient(ellipse 80% 80% at 50% 50%, transparent 55%, var(--vignette) 100%)",
+      "radial-gradient(ellipse 60% 45% at 50% 0%, color-mix(in srgb, var(--main_color) 3%, transparent), transparent 70%), radial-gradient(ellipse 80% 80% at 50% 50%, transparent 55%, var(--vignette) 100%)",
 
     // -------------------------------------------------------------------------
     // 8. BLUR & MOTION
@@ -159,65 +159,38 @@ const createThemeVariables = ({
     // -------------------------------------------------------------------------
     // 9. SCROLLBAR
     // -------------------------------------------------------------------------
-    "--scrollbar-thumb": "rgb(var(--accent_rgb) / 0.3)",
+    "--scrollbar-thumb": "rgb(var(--accent_rgb) / 0.35)",
     "--scrollbar-thumb-hover": "var(--accent)",
   };
 };
 
 export const colorThemes = {
-  // Primary: Obsidian Jet & Electric Cerulean (Default Theme)
+  // Primary: Obsidian Black & Neon Green (matches the logo identity)
+  // The id is kept as "obsidianCerulean" so saved localStorage values stay valid.
   obsidianCerulean: {
     id: "obsidianCerulean",
-    name: "Obsidian & Electric Cerulean",
-    nameAr: "أسود فحمي وأزرق سيروليان",
-    previewColor: "#40A2D8",
+    name: "Obsidian & Neon Green",
+    nameAr: "أسود فحمي وأخضر نيون",
+    previewColor: "#00ff37",
     bgPreview: "#000000",
     variables: createThemeVariables({
       mainColor: "#00ff37",
       mainRgb: "0 255 55",
-      accentColor: "#40A2D8",
-      accentRgb: "64 162 216",
+      accentColor: "#1fb84a",
+      accentRgb: "31 184 74",
       bgPrimary: "#000000",
       blackRgb: "0 0 0",
       whiteColor: "#ffffff",
       whiteRgb: "255 255 255",
-      pColor: "#aad2e6",
-      pRgb: "170 210 230",
+      pColor: "#8ea397",
+      pRgb: "142 163 151",
       warningColor: "#F0EDCF",
-      surfaceRgb: "6 13 26",
-      inputBgRgb: "4 9 18",
+      surfaceRgb: "4 11 7",
+      inputBgRgb: "3 8 5",
       textOnMain: "#000000",
       particleRgb: "0 255 55",
-      particleDotAlpha: "0.55",
-      particleLineAlpha: "0.22",
-    }),
-  },
-
-  // Secondary: Emerald Night
-  emeraldNight: {
-    id: "emeraldNight",
-    name: "Emerald Night",
-    nameAr: "زمردي ليلي",
-    previewColor: "#10b981",
-    bgPreview: "#030712",
-    variables: createThemeVariables({
-      mainColor: "#10b981",
-      mainRgb: "16 185 129",
-      accentColor: "#34d399",
-      accentRgb: "52 211 153",
-      bgPrimary: "#030712",
-      blackRgb: "0 0 0",
-      whiteColor: "#ffffff",
-      whiteRgb: "255 255 255",
-      pColor: "#9ca3af",
-      pRgb: "156 163 175",
-      warningColor: "#fef08a",
-      surfaceRgb: "10 20 28",
-      inputBgRgb: "5 12 18",
-      textOnMain: "#000000",
-      particleRgb: "16 185 129",
-      particleDotAlpha: "0.55",
-      particleLineAlpha: "0.22",
+      particleDotAlpha: "0.45",
+      particleLineAlpha: "0.16",
     }),
   },
 };

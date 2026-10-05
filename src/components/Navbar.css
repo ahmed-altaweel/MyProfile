@@ -27,23 +27,22 @@
 
 /* Floating Frosted Glass Island Container */
 .navbar-container {
-  pointer-events: auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1140px;
-  height: 56px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1.25rem 0 0.85rem;
-  border-radius: var(--radius-pill);
-  background: var(--navbar_bg);
-  backdrop-filter: var(--blur-glass);
-  -webkit-backdrop-filter: var(--blur-glass);
-  outline: none;
-  box-shadow: var(--shadow-navbar);
+    pointer-events: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1140px;
+    height: 56px;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 4px 18px, rgba(255, 255, 255, 0.2) 0px 1px inset;
+    padding: 0px 1.25rem 0px 0.85rem;
+    border-radius: 9999px;
+    background: rgba(41, 41, 41, 0.72);
+    outline: none;
 }
 
 /* Subtle diffuse light sheen */

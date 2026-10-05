@@ -64,7 +64,7 @@ export default function ServicesSection() {
 
               
 
-                <a href={item.actionHref} className="btn service-btn">
+                <a href={item.actionHref} className="service-btn">
                   <span>{item.actionText}</span>
                   <ArrowRight style={{ width: '1rem', height: '1rem' }} />
                 </a>

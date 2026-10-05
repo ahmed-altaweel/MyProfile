@@ -83,7 +83,7 @@
 .service-box h3 {
   font-size: 1.15rem;
   margin-bottom: 10px;
-  color: var(--main_color);
+  color: var(--white_color);
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -98,23 +98,19 @@
 }
 
 .service-btn {
-  width: 100%;
-  font-size: 0.88rem;
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  background: var(--tint-1);
-  border: 1px solid var(--border);
-  backdrop-filter: var(--blur-soft);
-  -webkit-backdrop-filter: var(--blur-soft);
-  color: var(--white_color);
-  font-weight: 600;
-  box-shadow: var(--shadow-inset);
-  transition: all var(--dur-base) var(--ease-out);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+ display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: var(--radius-sm);
+    background: var(--tint-1);
+    color: var(--main_color);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    border: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: all var(--dur-base) var(--ease-out);
 }
 
 .service-btn:hover {
