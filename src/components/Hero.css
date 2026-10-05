@@ -26,11 +26,7 @@
   width: min(900px, 90vw);
   height: min(420px, 50vh);
   transform: translate(-50%, -50%);
-  background: radial-gradient(
-    ellipse at center,
-    color-mix(in srgb, var(--main_color, #40a2d8) 14%, transparent) 0%,
-    transparent 70%
-  );
+  background: var(--hero-glow-gradient);
   filter: blur(40px);
   pointer-events: none;
 }
@@ -69,10 +65,9 @@
 .hero-letter {
   --p: 0; /* pointer proximity, 0 → 1, set from JS */
   display: inline-block;
-  color: color-mix(in srgb, var(--main_color, #40a2d8) calc(var(--p) * 100%), var(--white_color, #fff));
+  color: color-mix(in srgb, var(--main_color) calc(var(--p) * 100%), var(--white_color));
   transform: translateY(calc(var(--p) * -0.07em)) scale(calc(1 + var(--p) * 0.04));
-  text-shadow: 0 0 calc(var(--p) * 0.4em)
-    color-mix(in srgb, var(--main_color, #40a2d8) 55%, transparent);
+  text-shadow: var(--text-glow-letter);
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease, text-shadow 0.22s ease;
   animation: heroLetterRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) calc(0.15s + var(--i) * 45ms) backwards;
   will-change: transform;
@@ -80,11 +75,11 @@
 
 /* Second word: outline that fills in near the pointer */
 .hero-name-word.is-outline .hero-letter {
-  color: transparent;
-  -webkit-text-fill-color: color-mix(in srgb, var(--main_color, #40a2d8) calc(var(--p) * 100%), transparent);
+  color: var(--transparent);
+  -webkit-text-fill-color: color-mix(in srgb, var(--main_color) calc(var(--p) * 100%), transparent);
   -webkit-text-stroke: clamp(1.2px, 0.22vw, 2.5px)
-    color-mix(in srgb, var(--main_color, #40a2d8) calc(40% + var(--p) * 60%), var(--white_color, #fff));
-  text-shadow: none;
+    color-mix(in srgb, var(--main_color) calc(40% + var(--p) * 60%), var(--white_color));
+  text-shadow: var(--shadow-none);
 }
 
 /* --------------------------------------------------------------------------
@@ -100,7 +95,7 @@
   font-size: clamp(1.15rem, 2.6vw, 1.75rem);
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--main_color, #40a2d8);
+  color: var(--main_color);
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
 }
 
@@ -112,7 +107,7 @@
 .hero-caret {
   width: 2px;
   height: 1.1em;
-  background: var(--main_color, #40a2d8);
+  background: var(--main_color);
   animation: heroBlink 1s steps(1) infinite;
 }
 
@@ -122,7 +117,7 @@
   font-family: var(--font-body);
   font-size: clamp(0.95rem, 1.5vw, 1.12rem);
   line-height: 1.65;
-  color: var(--p_color, #9dbfd4);
+  color: var(--p_color);
   animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
 }
 
@@ -148,7 +143,7 @@
 .hero-actions-divider {
   width: 1px;
   height: 22px;
-  background: rgba(64, 162, 216, 0.25);
+  background: var(--border-divider);
 }
 
 .hero-btn-primary,
@@ -168,18 +163,18 @@
 }
 
 .hero-btn-primary {
-  background-color: var(--main_color, #40a2d8);
-  color: #000;
+  background-color: var(--main_color);
+  color: var(--text-on-main);
   font-weight: 700;
-  border: 1px solid var(--main_color, #40a2d8);
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--main_color, #40a2d8) 25%, transparent);
+  border: 1px solid var(--main_color);
+  box-shadow: var(--shadow-button-primary);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, filter 0.2s ease;
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
   filter: brightness(1.06);
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--main_color, #40a2d8) 38%, transparent);
+  box-shadow: var(--shadow-button-primary-hover);
 }
 
 .hero-btn-primary:hover .hero-btn-icon {
@@ -187,12 +182,12 @@
 }
 
 .hero-btn-secondary {
-  background-color: rgba(6, 13, 26, 0.65);
+  background-color: var(--surface-button);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid rgba(64, 162, 216, 0.22);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25);
-  color: var(--white_color, #fff);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-button-secondary);
+  color: var(--white_color);
   font-weight: 600;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
     color 0.2s ease, background-color 0.2s ease;
@@ -201,8 +196,8 @@
 .hero-btn-secondary:hover {
   transform: translateY(-2px);
   border-color: var(--main_color);
-  color: var(--main_color, #40a2d8);
-  background-color: color-mix(in srgb, var(--main_color, #40a2d8) 12%, transparent);
+  color: var(--main_color);
+  background-color: color-mix(in srgb, var(--main_color) 12%, transparent);
 }
 
 .hero-icon-btn {
@@ -213,12 +208,12 @@
   height: 40px;
   flex-shrink: 0;
   border-radius: 9px;
-  color: var(--p_color, #9dbfd4);
-  background-color: rgba(6, 13, 26, 0.65);
+  color: var(--p_color);
+  background-color: var(--surface-button);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid rgba(64, 162, 216, 0.22);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-button-secondary);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
     color 0.2s ease, background-color 0.2s ease;
 }
@@ -227,7 +222,7 @@
   transform: translateY(-2px);
   color: var(--main_color);
   border-color: var(--main_color);
-  background-color: color-mix(in srgb, var(--main_color, #40a2d8) 12%, transparent);
+  background-color: color-mix(in srgb, var(--main_color) 12%, transparent);
 }
 
 .hero-btn-icon {
@@ -256,8 +251,8 @@
   justify-content: center;
   padding-top: 7px;
   border-radius: 9999px;
-  border: 1px solid rgba(64, 162, 216, 0.3);
-  background: rgba(6, 13, 26, 0.45);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-scrollcue);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: border-color 0.2s ease;
@@ -265,14 +260,14 @@
 }
 
 .hero-scroll-cue:hover {
-  border-color: var(--main_color, #40a2d8);
+  border-color: var(--main_color);
 }
 
 .hero-scroll-dot {
   width: 4px;
   height: 7px;
   border-radius: 9999px;
-  background: var(--main_color, #40a2d8);
+  background: var(--main_color);
   animation: heroScrollDot 1.8s ease-in-out infinite;
 }
 

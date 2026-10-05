@@ -1,8 +1,6 @@
 @import './fonts.css';
 
 :root {
-  /* Palette: #000000, #0B60B0, #40A2D8, #F0EDCF */
-
   --font-heading: 'DM Sans', 'Cairo', sans-serif;
   --font-body: 'Inter', 'Cairo';
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -21,7 +19,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  scrollbar-gutter: stable; /* يحجز مكان الشريط فلا يحدث اهتزاز عند فتح النافذة */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -37,7 +35,7 @@ body {
 
 ::selection {
   background-color: var(--accent);
-  color: #000000;
+  color: var(--text-on-main);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -106,7 +104,7 @@ button {
   font-family: var(--font-heading);
   font-size: 0.92rem;
   text-transform: capitalize;
-  color: #000000;
+  color: var(--text-on-main);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
 }
@@ -114,7 +112,7 @@ button {
 .btn:hover {
   transform: translateY(-1px);
   filter: brightness(1.1);
-  box-shadow: 0 4px 20px rgba(64, 162, 216, 0.35);
+  box-shadow: var(--shadow-btn-hover);
 }
 
 /* Section top header - Compact spacing */
@@ -179,10 +177,10 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(64, 162, 216, 0.3);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--scrollbar-thumb-hover);
 }

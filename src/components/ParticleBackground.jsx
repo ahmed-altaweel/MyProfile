@@ -2,23 +2,24 @@ import React, { useEffect, useRef } from 'react';
 import { useTheme } from '../context/ThemeContext.jsx';
 import './ParticleBackground.css';
 
-function hexToRgb(hex) {
-  const h = hex.replace('#', '');
-  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
-  const n = parseInt(full, 16);
-  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-}
-
 export default function ParticleBackground() {
   const canvasRef = useRef(null);
   const { themeData } = useTheme();
-  const mainColor = themeData.variables['--main_color'] || '#40A2D8';
+
+  const particleRgb =
+    themeData.variables['--particle_rgb'] || themeData.variables['--main_rgb'];
+  const dotAlpha = themeData.variables['--particle_dot_alpha'];
+  const lineAlpha = themeData.variables['--particle_line_alpha'];
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const [r, g, b] = hexToRgb(mainColor);
+    const [r, g, b] = (particleRgb || '').trim().split(/\s+/);
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const makeRgbaString = (alpha) =>
+      ['rgb', 'a(', r, ', ', g, ', ', b, ', ', alpha, ')'].join('');
 
     let w = 0, h = 0, raf = 0, particles = [];
     const pointer = { x: -9999, y: -9999 };
@@ -49,7 +50,6 @@ export default function ParticleBackground() {
 
       for (const p of particles) {
         if (!reduce) {
-          // تجاذب خفيف نحو المؤشر
           const dx = pointer.x - p.x;
           const dy = pointer.y - p.y;
           const d = Math.hypot(dx, dy);
@@ -64,7 +64,7 @@ export default function ParticleBackground() {
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${r},${g},${b},0.55)`;
+        ctx.fillStyle = makeRgbaString(dotAlpha);
         ctx.fill();
       }
 
@@ -73,7 +73,7 @@ export default function ParticleBackground() {
           const a = particles[i], c = particles[j];
           const d = Math.hypot(a.x - c.x, a.y - c.y);
           if (d < LINK) {
-            ctx.strokeStyle = `rgba(${r},${g},${b},${(1 - d / LINK) * 0.22})`;
+            ctx.strokeStyle = makeRgbaString((1 - d / LINK) * Number(lineAlpha));
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -113,7 +113,7 @@ export default function ParticleBackground() {
       window.removeEventListener('pointerleave', onLeave);
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [mainColor]);
+  }, [particleRgb, dotAlpha, lineAlpha]);
 
   return (
     <div className="bg-fx" aria-hidden="true">

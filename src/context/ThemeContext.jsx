@@ -17,6 +17,20 @@ export function ThemeProvider({ children }) {
     }
   });
 
+  // Dev-only check: verify that all themes have all variables present in default theme
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      const defaultVars = Object.keys(colorThemes[defaultThemeId]?.variables || {});
+      Object.entries(colorThemes).forEach(([id, theme]) => {
+        const themeVars = theme.variables || {};
+        const missing = defaultVars.filter((v) => !(v in themeVars));
+        if (missing.length > 0) {
+          console.warn(`[ThemeContext] Theme "${id}" is missing variables:`, missing);
+        }
+      });
+    }
+  }, []);
+
   useEffect(() => {
     const theme = colorThemes[currentTheme] || colorThemes[defaultThemeId];
     const root = document.documentElement;

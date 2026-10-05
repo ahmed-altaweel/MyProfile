@@ -1,8 +1,8 @@
 .app-wrapper {
   position: relative;
   min-height: 100vh;
-  background-color: var(--bg-primary, #131313);
-  color: var(--text-primary, #FFFFFF);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
 }
 
@@ -14,7 +14,7 @@
 .app-section {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  border-top: 1px solid var(--border-section);
 }
 
 @media (min-width: 640px) {

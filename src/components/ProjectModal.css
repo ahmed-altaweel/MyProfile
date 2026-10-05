@@ -1,7 +1,7 @@
 /* ==========================================================================
    Project Detail Modal
-   - Same glass surface, #00ff882e border and glow used by About / Services /
-     Contact, but every accent derives from --main_color so all 3 themes work
+   - Same glass surface, border and glow used by About / Services / Contact,
+     but every accent derives from --main_color so all themes work
    - Fixed header + scrollable body (the close button never covers the title)
    - Key results are the focal point; everything else stays quiet
    - Bottom sheet on phones
@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.72);
+  background-color: var(--overlay-backdrop);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   animation: modalFadeIn 0.3s ease both;
@@ -25,12 +25,12 @@
    element (fading an element that has backdrop-filter is what causes jank) */
 @keyframes modalFadeIn {
   from {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--overlay-backdrop-faded);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
   }
   to {
-    background-color: rgba(0, 0, 0, 0.72);
+    background-color: var(--overlay-backdrop);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
@@ -38,12 +38,12 @@
 
 @keyframes modalFadeOut {
   from {
-    background-color: rgba(0, 0, 0, 0.72);
+    background-color: var(--overlay-backdrop);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
   to {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--overlay-backdrop-faded);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
   }
@@ -91,14 +91,9 @@
   max-width: 54rem;
   max-height: min(90vh, 900px);
   border-radius: 20px;
-  /* No backdrop-filter here: the backdrop is already blurred, and a second
-     blur layer on an animating element is the main cause of stutter */
-  background: rgb(7 14 27 / 94%);
-  border: 1px solid #00ff882e;
-  box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
-    0 28px 60px -15px rgba(0, 0, 0, 0.75),
-    0 0 45px -6px color-mix(in srgb, var(--main_color, #40a2d8) 22%, transparent);
+  background: var(--surface-modal);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-modal);
   overflow: hidden;
   will-change: transform, opacity;
   animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -114,14 +109,7 @@
   height: 1px;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.12) 30%,
-    color-mix(in srgb, var(--main_color, #40a2d8) 50%, transparent) 50%,
-    rgba(255, 255, 255, 0.12) 70%,
-    transparent 100%
-  );
+  background: var(--gradient-specular-modal);
 }
 
 /* --------------------------------------------------------------------------
@@ -133,7 +121,7 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1.5rem 1.75rem 1.1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--hairline-md);
   flex-shrink: 0;
 }
 
@@ -154,9 +142,9 @@
   font-weight: 600;
   padding: 3px 10px;
   border-radius: 9999px;
-  color: var(--main_color, #40a2d8);
-  background: color-mix(in srgb, var(--main_color, #40a2d8) 9%, transparent);
-  border: 1px solid color-mix(in srgb, var(--main_color, #40a2d8) 22%, transparent);
+  color: var(--main_color);
+  background: color-mix(in srgb, var(--main_color) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--main_color) 22%, transparent);
 }
 
 .project-modal-title {
@@ -165,7 +153,7 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: var(--white_color, #fff);
+  color: var(--white_color);
 }
 
 .project-modal-close-btn {
@@ -176,17 +164,17 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: var(--p_color, #9dbfd4);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--p_color);
+  background: var(--white-tint-md);
+  border: 1px solid var(--hairline-xl);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease,
     background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .project-modal-close-btn:hover {
-  color: #000;
-  background-color: var(--main_color, #40a2d8);
-  border-color: var(--main_color, #40a2d8);
+  color: var(--text-on-main);
+  background-color: var(--main_color);
+  border-color: var(--main_color);
   transform: rotate(90deg);
 }
 
@@ -203,14 +191,14 @@
   flex-direction: column;
   gap: 1.75rem;
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--main_color, #40a2d8) 40%, transparent) transparent;
+  scrollbar-color: color-mix(in srgb, var(--main_color) 40%, transparent) transparent;
 }
 
 .project-modal-desc {
   max-width: 46rem;
   font-size: 0.98rem;
   line-height: 1.7;
-  color: var(--p_color, #9dbfd4);
+  color: var(--p_color);
 }
 
 /* Links */
@@ -231,33 +219,33 @@
   font-family: var(--font-heading);
   font-size: 0.84rem;
   font-weight: 600;
-  color: var(--main_color, #fff);
-  background: rgba(6, 13, 26, 0.65);
-  border: 1px solid rgba(64, 162, 216, 0.22);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  color: var(--main_color);
+  background: var(--surface-button);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-inset-highlight-sm);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
     color 0.2s ease, background-color 0.2s ease;
 }
 
 .project-modal-link-item:hover {
   transform: translateY(-2px);
-  color: var(--main_color, #40a2d8);
-  border-color: var(--main_color, #40a2d8);
-  background: color-mix(in srgb, var(--main_color, #40a2d8) 12%, transparent);
+  color: var(--main_color);
+  border-color: var(--main_color);
+  background: color-mix(in srgb, var(--main_color) 12%, transparent);
 }
 
 .project-modal-link-item.link-accent {
-  color: #000;
+  color: var(--text-on-main);
   font-weight: 700;
-  background-color: var(--main_color, #40a2d8);
-  border-color: var(--main_color, #40a2d8);
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--main_color, #40a2d8) 25%, transparent);
+  background-color: var(--main_color);
+  border-color: var(--main_color);
+  box-shadow: var(--shadow-button-primary);
 }
 
 .project-modal-link-item.link-accent:hover {
-  color: #000;
+  color: var(--text-on-main);
   filter: brightness(1.06);
-  background-color: var(--main_color, #40a2d8);
+  background-color: var(--main_color);
 }
 
 /* --------------------------------------------------------------------------
@@ -272,11 +260,11 @@
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--main_color, #fff);
+  color: var(--main_color);
 }
 
 .project-modal-section-title svg {
-  color: var(--main_color, #40a2d8);
+  color: var(--main_color);
   flex-shrink: 0;
 }
 
@@ -292,17 +280,15 @@
   overflow: hidden;
   padding: 1rem;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--main_color, #40a2d8) 6%, rgb(6 13 26 / 60%));
-  border: 1px solid color-mix(in srgb, var(--main_color, #40a2d8) 20%, transparent);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 8px 20px -8px rgba(0, 0, 0, 0.45);
+  background: var(--surface-metric-card);
+  border: 1px solid color-mix(in srgb, var(--main_color) 20%, transparent);
+  box-shadow: var(--shadow-metric-card);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 
 .project-modal-metric-card:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--main_color, #40a2d8) 50%, transparent);
+  border-color: color-mix(in srgb, var(--main_color) 50%, transparent);
 }
 
 .project-modal-metric-val {
@@ -311,7 +297,7 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: var(--main_color, #40a2d8);
+  color: var(--main_color);
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }
@@ -321,14 +307,14 @@
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--white_color, #fff);
+  color: var(--white_color);
 }
 
 .project-modal-metric-note {
   margin-top: 0.25rem;
   font-size: 0.74rem;
   line-height: 1.45;
-  color: var(--p_color, #9dbfd4);
+  color: var(--p_color);
 }
 
 /* Problem / approach */
@@ -341,18 +327,18 @@
 .project-modal-box {
   padding: 1.1rem 1.2rem;
   border-radius: 12px;
-  background: rgb(6 13 26 / 55%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--surface-modal-box);
+  border: 1px solid var(--hairline-lg);
   border-left-width: 3px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-box-inset);
 }
 
 .project-modal-box.is-problem {
-  border-left-color: var(--warning, #f0edcf);
+  border-left-color: var(--warning);
 }
 
 .project-modal-box.is-approach {
-  border-left-color: var(--main_color, #40a2d8);
+  border-left-color: var(--main_color);
 }
 
 .project-modal-box-header {
@@ -362,22 +348,22 @@
   font-family: var(--font-heading);
   font-size: 0.92rem;
   font-weight: 700;
-  color: var(--white_color, #fff);
+  color: var(--white_color);
 }
 
 .project-modal-box.is-problem .project-modal-box-header svg {
-  color: var(--warning, #f0edcf);
+  color: var(--warning);
 }
 
 .project-modal-box.is-approach .project-modal-box-header svg {
-  color: var(--main_color, #40a2d8);
+  color: var(--main_color);
 }
 
 .project-modal-box-desc {
   margin-top: 0.55rem;
   font-size: 0.86rem;
   line-height: 1.65;
-  color: var(--p_color, #9dbfd4);
+  color: var(--p_color);
 }
 
 /* Architecture */
@@ -387,9 +373,9 @@
   font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.7;
-  color: var(--white_color, #fff);
-  background: rgba(4, 9, 18, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--white_color);
+  background: var(--surface-code);
+  border: 1px solid var(--hairline-md);
 }
 
 /* Pipeline */
@@ -405,27 +391,27 @@
   gap: 0.75rem;
   padding: 0.8rem 1rem;
   border-radius: 10px;
-  background: rgb(6 13 26 / 55%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--surface-modal-box);
+  border: 1px solid var(--hairline-lg);
   font-size: 0.82rem;
 }
 
 .pipeline-step {
   font-family: var(--font-mono);
   font-weight: 700;
-  color: var(--main_color, #40a2d8);
+  color: var(--main_color);
 }
 
 .pipeline-name {
   font-weight: 600;
-  color: var(--white_color, #fff);
+  color: var(--white_color);
 }
 
 .pipeline-desc {
   margin-top: 2px;
   font-size: 0.76rem;
   line-height: 1.5;
-  color: var(--p_color, #9dbfd4);
+  color: var(--p_color);
 }
 
 /* Technologies: same tokens as the rest of the site */
@@ -440,30 +426,30 @@
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 6px;
-  color: var(--white_color, #fff);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--white_color);
+  background: var(--white-tint-md);
+  border: 1px solid var(--hairline-lg);
   white-space: nowrap;
   transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 .project-modal-tech-token:hover {
-  color: var(--main_color, #40a2d8);
-  border-color: color-mix(in srgb, var(--main_color, #40a2d8) 35%, transparent);
-  background: color-mix(in srgb, var(--main_color, #40a2d8) 8%, transparent);
+  color: var(--main_color);
+  border-color: color-mix(in srgb, var(--main_color) 35%, transparent);
+  background: color-mix(in srgb, var(--main_color) 8%, transparent);
 }
 
 /* Challenges */
 .project-modal-challenges {
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--hairline-md);
 }
 
 .project-modal-challenges-text {
   max-width: 46rem;
   font-size: 0.86rem;
   line-height: 1.7;
-  color: var(--p_color, #9dbfd4);
+  color: var(--p_color);
 }
 
 /* --------------------------------------------------------------------------
