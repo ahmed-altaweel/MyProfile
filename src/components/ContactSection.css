@@ -41,20 +41,20 @@
   display: flex;
   flex-direction: column;
   padding: 24px 26px;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: var(--surface-glass);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
   border: 1px solid var(--border-card);
   box-shadow: var(--shadow-card);
   transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
 }
 
 .contact-channels-panel:hover {
-  border-color: var(--border-card-hover);
+  border-color: var(--border-hover);
   box-shadow: var(--shadow-card-hover);
 }
 
@@ -90,41 +90,41 @@
   align-items: center;
   gap: 12px;
   padding: 9px 12px;
-  border-radius: 10px;
-  background: var(--white-tint-xs);
-  border: 1px solid var(--hairline-xs);
+  border-radius: var(--radius-md);
+  background: var(--fill-1);
+  border: 1px solid var(--line-1);
   text-decoration: none;
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.2s ease;
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) ease;
 }
 
 .contact-channel-row:hover {
-  background: var(--white-tint-md);
-  border-color: var(--border-row-hover);
-  transform: translateX(4px);
-  box-shadow: var(--shadow-channel-row-hover);
+  background: var(--fill-2);
+  border-color: var(--border);
+  transform: translateX(3px);
+  box-shadow: var(--shadow-sm);
 }
 
 .channel-icon-sheen {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
-  background: var(--tint-xs);
-  border: 1px solid var(--tint-button-border);
+  border-radius: var(--radius-sm);
+  background: var(--tint-1);
+  border: 1px solid var(--border-subtle);
   color: var(--main_color);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform var(--dur-fast) ease, background var(--dur-fast) ease;
 }
 
 .contact-channel-row:hover .channel-icon-sheen {
   transform: scale(1.06);
-  background: var(--tint-icon-sheen-hover);
+  background: var(--tint-2);
 }
 
 .channel-info {
@@ -152,7 +152,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: color 0.2s ease;
+  transition: color var(--dur-fast) ease;
 }
 
 .contact-channel-row:hover .channel-value {
@@ -164,7 +164,7 @@
   opacity: 0.4;
   margin-left: auto;
   flex-shrink: 0;
-  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+  transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 
 .contact-channel-row:hover .channel-arrow {
@@ -180,19 +180,19 @@
   display: flex;
   flex-direction: column;
   padding: 24px 28px;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: var(--surface-glass);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
   border: 1px solid var(--border-card);
   box-shadow: var(--shadow-card);
   transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
 }
 
 .contact-form-panel:hover {
-  border-color: var(--border-card-hover);
+  border-color: var(--border-hover);
   box-shadow: var(--shadow-card-hover);
 }
 
@@ -251,18 +251,18 @@
 .form-input,
 .form-textarea {
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 10px 13px;
   font-size: 0.86rem;
   color: var(--white_color);
   background: var(--surface-input);
-  border: 1px solid var(--hairline-md);
+  border: 1px solid var(--line-2);
   outline: none;
   font-family: var(--font-body);
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease,
+    background var(--dur-fast) ease;
 }
 
 .form-input::placeholder,
@@ -274,10 +274,8 @@
 .form-input:focus,
 .form-textarea:focus {
   background: var(--surface-input-focus);
-  box-shadow: var(--shadow-input-focus);
-  outline: auto;
-  outline-color: var(--main_color);
-  outline-width: 1px;
+  border-color: var(--main_color);
+  box-shadow: var(--shadow-focus);
 }
 
 .form-textarea {
@@ -299,7 +297,7 @@
   justify-content: center;
   gap: 8px;
   padding: 0.68rem 1.6rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background-color: var(--main_color);
   color: var(--text-on-main);
   font-family: var(--font-heading);
@@ -308,17 +306,17 @@
   border: 1px solid var(--main_color);
   cursor: pointer;
   transition:
-    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.25s ease,
-    filter 0.2s ease;
-  box-shadow: var(--shadow-submit-btn);
+    transform var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) ease,
+    filter var(--dur-fast) ease;
+  box-shadow: var(--shadow-glow);
   white-space: nowrap;
 }
 
 .contact-submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   filter: brightness(1.05);
-  box-shadow: var(--shadow-submit-btn-hover);
+  box-shadow: var(--shadow-glow-hover);
 }
 
 .contact-submit-btn:disabled {
@@ -343,7 +341,7 @@
   text-align: center;
   padding: 36px 24px;
   gap: 12px;
-  animation: successFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: successFadeIn 0.3s var(--ease-out);
 }
 
 @keyframes successFadeIn {

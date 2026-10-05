@@ -27,7 +27,7 @@
   height: min(420px, 50vh);
   transform: translate(-50%, -50%);
   background: var(--hero-glow-gradient);
-  filter: blur(40px);
+  filter: var(--blur-overlay);
   pointer-events: none;
 }
 
@@ -68,8 +68,8 @@
   color: color-mix(in srgb, var(--main_color) calc(var(--p) * 100%), var(--white_color));
   transform: translateY(calc(var(--p) * -0.07em)) scale(calc(1 + var(--p) * 0.04));
   text-shadow: var(--text-glow-letter);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.22s ease, text-shadow 0.22s ease;
-  animation: heroLetterRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) calc(0.15s + var(--i) * 45ms) backwards;
+  transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) ease, text-shadow var(--dur-fast) ease;
+  animation: heroLetterRise 0.9s var(--ease-out) calc(0.15s + var(--i) * 45ms) backwards;
   will-change: transform;
 }
 
@@ -96,12 +96,12 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--main_color);
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+  animation: heroFadeUp 0.8s var(--ease-out) 0.75s both;
 }
 
 .hero-role-text {
   display: inline-block;
-  animation: heroRoleSwap 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: heroRoleSwap 0.5s var(--ease-out) both;
 }
 
 .hero-caret {
@@ -118,7 +118,7 @@
   font-size: clamp(0.95rem, 1.5vw, 1.12rem);
   line-height: 1.65;
   color: var(--p_color);
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+  animation: heroFadeUp 0.8s var(--ease-out) 0.9s both;
 }
 
 /* --------------------------------------------------------------------------
@@ -131,7 +131,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: clamp(22px, 3.5vw, 32px);
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
+  animation: heroFadeUp 0.8s var(--ease-out) 1.05s both;
 }
 
 .hero-social-group {
@@ -143,7 +143,7 @@
 .hero-actions-divider {
   width: 1px;
   height: 22px;
-  background: var(--border-divider);
+  background: var(--border-card);
 }
 
 .hero-btn-primary,
@@ -156,7 +156,7 @@
   padding: 0 1.05rem;
   font-family: var(--font-heading);
   font-size: 0.84rem;
-  border-radius: 9px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -167,14 +167,14 @@
   color: var(--text-on-main);
   font-weight: 700;
   border: 1px solid var(--main_color);
-  box-shadow: var(--shadow-button-primary);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, filter 0.2s ease;
+  box-shadow: var(--shadow-glow);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) ease, filter var(--dur-fast) ease;
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
   filter: brightness(1.06);
-  box-shadow: var(--shadow-button-primary-hover);
+  box-shadow: var(--shadow-glow-hover);
 }
 
 .hero-btn-primary:hover .hero-btn-icon {
@@ -182,22 +182,22 @@
 }
 
 .hero-btn-secondary {
-  background-color: var(--surface-button);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid var(--border-default);
-  box-shadow: var(--shadow-button-secondary);
+  background-color: var(--surface-solid);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
   color: var(--white_color);
   font-weight: 600;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
-    color 0.2s ease, background-color 0.2s ease;
+  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 
 .hero-btn-secondary:hover {
   transform: translateY(-2px);
   border-color: var(--main_color);
   color: var(--main_color);
-  background-color: color-mix(in srgb, var(--main_color) 12%, transparent);
+  background-color: var(--tint-2);
 }
 
 .hero-icon-btn {
@@ -207,29 +207,29 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
-  border-radius: 9px;
+  border-radius: var(--radius-sm);
   color: var(--p_color);
-  background-color: var(--surface-button);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid var(--border-default);
-  box-shadow: var(--shadow-button-secondary);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
-    color 0.2s ease, background-color 0.2s ease;
+  background-color: var(--surface-solid);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 
 .hero-icon-btn:hover {
   transform: translateY(-2px);
   color: var(--main_color);
   border-color: var(--main_color);
-  background-color: color-mix(in srgb, var(--main_color) 12%, transparent);
+  background-color: var(--tint-2);
 }
 
 .hero-btn-icon {
   width: 0.95rem;
   height: 0.95rem;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform var(--dur-fast) ease;
 }
 
 .hero-icon-svg {
@@ -250,12 +250,12 @@
   display: flex;
   justify-content: center;
   padding-top: 7px;
-  border-radius: 9999px;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--border-strong);
-  background: var(--surface-scrollcue);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: border-color 0.2s ease;
+  background: var(--surface-glass);
+  backdrop-filter: var(--blur-soft);
+  -webkit-backdrop-filter: var(--blur-soft);
+  transition: border-color var(--dur-fast) ease;
   animation: heroFadeUp 0.8s ease 1.4s both;
 }
 
@@ -266,7 +266,7 @@
 .hero-scroll-dot {
   width: 4px;
   height: 7px;
-  border-radius: 9999px;
+  border-radius: var(--radius-pill);
   background: var(--main_color);
   animation: heroScrollDot 1.8s ease-in-out infinite;
 }

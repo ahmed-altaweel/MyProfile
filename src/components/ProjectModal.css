@@ -1,7 +1,6 @@
 /* ==========================================================================
    Project Detail Modal
    - Same glass surface, border and glow used by About / Services / Contact,
-     but every accent derives from --main_color so all themes work
    - Fixed header + scrollable body (the close button never covers the title)
    - Key results are the focal point; everything else stays quiet
    - Bottom sheet on phones
@@ -16,8 +15,8 @@
   justify-content: center;
   padding: 1.5rem;
   background-color: var(--overlay-backdrop);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: var(--blur-soft);
+  -webkit-backdrop-filter: var(--blur-soft);
   animation: modalFadeIn 0.3s ease both;
 }
 
@@ -31,16 +30,16 @@
   }
   to {
     background-color: var(--overlay-backdrop);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: var(--blur-soft);
+    -webkit-backdrop-filter: var(--blur-soft);
   }
 }
 
 @keyframes modalFadeOut {
   from {
     background-color: var(--overlay-backdrop);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: var(--blur-soft);
+    -webkit-backdrop-filter: var(--blur-soft);
   }
   to {
     background-color: var(--overlay-backdrop-faded);
@@ -73,11 +72,11 @@
 /* Closing state (set from JS, removed from the DOM after 200ms) */
 .project-modal-backdrop.is-closing {
   pointer-events: none;
-  animation: modalFadeOut 0.2s ease both;
+  animation: modalFadeOut var(--dur-fast) ease both;
 }
 
 .project-modal-backdrop.is-closing .project-modal-window {
-  animation: modalPopOut 0.2s cubic-bezier(0.4, 0, 1, 1) both;
+  animation: modalPopOut var(--dur-fast) cubic-bezier(0.4, 0, 1, 1) both;
 }
 
 /* --------------------------------------------------------------------------
@@ -90,13 +89,13 @@
   width: 100%;
   max-width: 54rem;
   max-height: min(90vh, 900px);
-  border-radius: 20px;
-  background: var(--surface-modal);
+  border-radius: var(--radius-xl);
+  background: var(--surface-overlay);
   border: 1px solid var(--border-card);
-  box-shadow: var(--shadow-modal);
+  box-shadow: var(--shadow-overlay);
   overflow: hidden;
   will-change: transform, opacity;
-  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: modalPopIn 0.35s var(--ease-out) both;
 }
 
 /* Specular hairline along the top edge (same as the section cards) */
@@ -109,7 +108,7 @@
   height: 1px;
   z-index: 2;
   pointer-events: none;
-  background: var(--gradient-specular-modal);
+  background: var(--gradient-specular);
 }
 
 /* --------------------------------------------------------------------------
@@ -121,30 +120,12 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1.5rem 1.75rem 1.1rem;
-  border-bottom: 1px solid var(--hairline-md);
+  border-bottom: 1px solid var(--line-2);
   flex-shrink: 0;
 }
 
 .project-modal-header-text {
   min-width: 0;
-}
-
-.project-modal-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 0.65rem;
-}
-
-.project-modal-chip {
-  font-family: var(--font-heading);
-  font-size: 0.74rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 9999px;
-  color: var(--main_color);
-  background: color-mix(in srgb, var(--main_color) 9%, transparent);
-  border: 1px solid color-mix(in srgb, var(--main_color) 22%, transparent);
 }
 
 .project-modal-title {
@@ -165,10 +146,10 @@
   height: 36px;
   border-radius: 50%;
   color: var(--p_color);
-  background: var(--white-tint-md);
-  border: 1px solid var(--hairline-xl);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease,
-    background-color 0.2s ease, border-color 0.2s ease;
+  background: var(--fill-1);
+  border: 1px solid var(--line-3);
+  transition: transform var(--dur-base) var(--ease-out), color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
 }
 
 .project-modal-close-btn:hover {
@@ -191,7 +172,7 @@
   flex-direction: column;
   gap: 1.75rem;
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--main_color) 40%, transparent) transparent;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
 .project-modal-desc {
@@ -215,23 +196,23 @@
   gap: 0.5rem;
   height: 38px;
   padding: 0 1rem;
-  border-radius: 9px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-heading);
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--main_color);
-  background: var(--surface-button);
-  border: 1px solid var(--border-default);
-  box-shadow: var(--shadow-inset-highlight-sm);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
-    color 0.2s ease, background-color 0.2s ease;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-inset);
+  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 
 .project-modal-link-item:hover {
   transform: translateY(-2px);
   color: var(--main_color);
   border-color: var(--main_color);
-  background: color-mix(in srgb, var(--main_color) 12%, transparent);
+  background: var(--tint-2);
 }
 
 .project-modal-link-item.link-accent {
@@ -239,7 +220,7 @@
   font-weight: 700;
   background-color: var(--main_color);
   border-color: var(--main_color);
-  box-shadow: var(--shadow-button-primary);
+  box-shadow: var(--shadow-glow);
 }
 
 .project-modal-link-item.link-accent:hover {
@@ -279,16 +260,16 @@
   position: relative;
   overflow: hidden;
   padding: 1rem;
-  border-radius: 12px;
-  background: var(--surface-metric-card);
-  border: 1px solid color-mix(in srgb, var(--main_color) 20%, transparent);
-  box-shadow: var(--shadow-metric-card);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  border-radius: var(--radius-md);
+  background: var(--surface-solid);
+  border: 1px solid var(--tint-3);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) ease;
 }
 
 .project-modal-metric-card:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--main_color) 50%, transparent);
+  border-color: var(--main_color);
 }
 
 .project-modal-metric-val {
@@ -326,11 +307,11 @@
 
 .project-modal-box {
   padding: 1.1rem 1.2rem;
-  border-radius: 12px;
-  background: var(--surface-modal-box);
-  border: 1px solid var(--hairline-lg);
+  border-radius: var(--radius-md);
+  background: var(--surface-solid);
+  border: 1px solid var(--line-2);
   border-left-width: 3px;
-  box-shadow: var(--shadow-box-inset);
+  box-shadow: var(--shadow-inset);
 }
 
 .project-modal-box.is-problem {
@@ -369,13 +350,13 @@
 /* Architecture */
 .project-modal-architecture {
   padding: 0.95rem 1.1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.7;
   color: var(--white_color);
-  background: var(--surface-code);
-  border: 1px solid var(--hairline-md);
+  background: var(--surface-solid);
+  border: 1px solid var(--line-2);
 }
 
 /* Pipeline */
@@ -390,9 +371,9 @@
   display: flex;
   gap: 0.75rem;
   padding: 0.8rem 1rem;
-  border-radius: 10px;
-  background: var(--surface-modal-box);
-  border: 1px solid var(--hairline-lg);
+  border-radius: var(--radius-sm);
+  background: var(--surface-solid);
+  border: 1px solid var(--line-2);
   font-size: 0.82rem;
 }
 
@@ -425,24 +406,24 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   color: var(--white_color);
-  background: var(--white-tint-md);
-  border: 1px solid var(--hairline-lg);
+  background: var(--fill-1);
+  border: 1px solid var(--line-2);
   white-space: nowrap;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  transition: border-color var(--dur-fast) ease, color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 
 .project-modal-tech-token:hover {
   color: var(--main_color);
-  border-color: color-mix(in srgb, var(--main_color) 35%, transparent);
-  background: color-mix(in srgb, var(--main_color) 8%, transparent);
+  border-color: var(--tint-border);
+  background: var(--tint-1);
 }
 
 /* Challenges */
 .project-modal-challenges {
   padding-top: 1.25rem;
-  border-top: 1px solid var(--hairline-md);
+  border-top: 1px solid var(--line-2);
 }
 
 .project-modal-challenges-text {
@@ -477,12 +458,12 @@
     max-width: none;
     max-height: 92vh;
     max-height: 92dvh;
-    border-radius: 20px 20px 0 0;
-    animation: modalSheetIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    animation: modalSheetIn 0.38s var(--ease-out) both;
   }
 
   .project-modal-backdrop.is-closing .project-modal-window {
-    animation: modalSheetOut 0.2s cubic-bezier(0.4, 0, 1, 1) both;
+    animation: modalSheetOut var(--dur-fast) cubic-bezier(0.4, 0, 1, 1) both;
   }
 
   .project-modal-header {

@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100vh;
   background-color: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--white_color);
   overflow-x: hidden;
 }
 
@@ -14,7 +14,7 @@
 .app-section {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  border-top: 1px solid var(--border-section);
+  border-top: 1px solid var(--border-card);
 }
 
 @media (min-width: 640px) {

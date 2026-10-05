@@ -10,10 +10,10 @@
   position: relative;
   overflow: hidden;
   padding: 32px 40px 22px;
-  border-radius: 18px;
+  border-radius: var(--radius-xl);
   background: var(--surface-glass);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
   border: 1px solid var(--border-card);
   box-shadow: var(--shadow-card);
 }
@@ -25,7 +25,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--gradient-specular-footer);
+  background: var(--gradient-specular);
   pointer-events: none;
 }
 
@@ -53,7 +53,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--white_color);
-  transition: color 0.2s ease;
+  transition: color var(--dur-fast) ease;
 }
 
 .footer-logo-link:hover .footer-name {
@@ -79,7 +79,7 @@
   width: 1px;
   height: 22px;
   margin: 0 4px;
-  background: var(--border-divider);
+  background: var(--border-card);
 }
 
 .footer-social-link {
@@ -88,20 +88,20 @@
   justify-content: center;
   width: 38px;
   height: 38px;
-  border-radius: 9px;
+  border-radius: var(--radius-sm);
   color: var(--p_color);
-  background: var(--surface-button);
-  border: 1px solid var(--border-default);
-  box-shadow: var(--shadow-inset-highlight-sm);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease,
-    color 0.2s ease, background-color 0.2s ease;
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-inset);
+  transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 
 .footer-social-link:hover {
   transform: translateY(-2px);
   color: var(--main_color);
   border-color: var(--main_color);
-  background-color: color-mix(in srgb, var(--main_color) 12%, transparent);
+  background-color: var(--tint-2);
 }
 
 .footer-bottom-row {
@@ -112,7 +112,7 @@
   gap: 12px;
   margin-top: 28px;
   padding-top: 18px;
-  border-top: 1px solid var(--border-bottom-row);
+  border-top: 1px solid var(--border-card);
   font-size: 0.78rem;
   color: var(--p_color);
 }
@@ -123,14 +123,14 @@
   gap: 0.45rem;
   height: 36px;
   padding: 0 14px;
-  border-radius: 9px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-on-main);
   background-color: var(--main_color);
-  box-shadow: var(--shadow-button-primary);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+  box-shadow: var(--shadow-glow);
+  transition: transform var(--dur-base) var(--ease-out), filter var(--dur-fast) ease;
 }
 
 .footer-back-to-top:hover {
