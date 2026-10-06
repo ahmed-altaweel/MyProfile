@@ -59,7 +59,7 @@ const createThemeVariables = ({
     /* Surfaces */
     "--surface-glass": "rgb(var(--surface_rgb) / 0.01)",
     "--surface-solid": "rgb(var(--surface_rgb) / 0.03)",
-    "--surface-overlay": "rgb(var(--surface_rgb) / 0.92)",
+    "--surface-overlay": "rgb(0 0 0 / 0.92)",
     "--surface-input": "rgb(var(--input_bg_rgb) / 0.45)",
     "--surface-input-focus": "rgb(var(--input_bg_rgb) / 0.7)",
 
@@ -67,7 +67,7 @@ const createThemeVariables = ({
 
     /* Overlays */
     "--overlay-backdrop": "rgb(var(--black_rgb) / 0.72)",
-    "--overlay-backdrop-faded": "rgb(var(--black_rgb) / 0)",
+    "--overlay-backdrop-faded": "rgb(var(--black_rgb) / 1)",
     "--vignette": "rgb(var(--black_rgb) / 0.7)",
 
     /* Borders */

@@ -183,7 +183,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: var(--main_color);
+  color: var(--p_color);
   background: var(--fill-1);
   border: none;
   cursor: pointer;
