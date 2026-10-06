@@ -80,7 +80,7 @@
   backdrop-filter: var(--blur-soft);
   -webkit-backdrop-filter: var(--blur-soft);
   border: 1px solid var(--border-card);
-  border-left: 3px solid var(--main_color);
+  border-left: 1px solid var(--main_color);
   border-radius: var(--radius-sm);
   padding: 10px 16px;
   box-shadow: var(--shadow-sm);
@@ -129,7 +129,7 @@
 
 .about-image-wrapper:hover {
   transform: scale(1.02);
-  border-color: var(--main_color);
+
   box-shadow: var(--shadow-card-hover);
 }
 

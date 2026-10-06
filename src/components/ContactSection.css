@@ -274,7 +274,7 @@
 .form-input:focus,
 .form-textarea:focus {
   background: var(--surface-input-focus);
-  border-color: var(--main_color);
+
   box-shadow: var(--shadow-focus);
 }
 
